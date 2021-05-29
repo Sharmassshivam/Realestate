@@ -49,6 +49,9 @@ def login(request):
         if user is not None:
             auth.login(request,user)
             return redirect('dashboard')
+        else:
+            #a message should be displayed will add later
+            return redirect('login')
     else:
         return  render(request,'accounts/login.html')
 
@@ -56,4 +59,4 @@ def login(request):
 def logout(request):
     return  redirect(index)
 def dashboard(request):
-    return render(request,'accounts/register.html')
+    return render(request,'accounts/dashboard.html')
