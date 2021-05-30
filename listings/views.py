@@ -7,8 +7,11 @@ def index(request):
     paginator=Paginator(listings, 3)
     page=request.GET.get('page')
     paged_listings=paginator.get_page(page)
+    context={
+        'listings':paged_listings
+    }
 
-    return render(request,'listngs/listings.html')
+    return render(request,'listngs/listings.html',context)
 def listing(request):
     return render(request,'listngs/listing.html')
 def search(request):
