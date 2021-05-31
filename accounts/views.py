@@ -57,8 +57,10 @@ def login(request):
 
     return render(request,'accounts/login.html')
 def logout(request):
-    logout(request.user)
-    return redirect('index')
+    if request.user.is_authenticated:
+
+        auth.logout(request)
+        return redirect('index')
 
 
 def dashboard(request):
